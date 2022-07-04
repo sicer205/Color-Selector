@@ -104,7 +104,7 @@ function 刷新(i)
     seek[i].setProgress(hsvcolor[i])
     top.setBackgroundColor(Color.HSVToColor(float{hsvcolor[1],hsvcolor[2]/100,hsvcolor[3]/100}))
     for a, v in pairs(bottom)
-      v.setText("复制"..bottomtext[a]..str)
+      v.setText("Copy"..bottomtext[a]..str)
     end
     if (color[2]+color[3])/3 > 255/2 then
       top.setTextColor(Color.BLACK)
@@ -115,7 +115,7 @@ function 刷新(i)
    elseif 模式 == 2 then
     for a, v in pairs(bottom)
       --print(a,type(a))
-      v.setText("复制"..bottomtext[a]..数值变十六进制(color[1])..数值变十六进制(color[2])..数值变十六进制(color[3]))
+      v.setText("Copy"..bottomtext[a]..数值变十六进制(color[1])..数值变十六进制(color[2])..数值变十六进制(color[3]))
     end
     text[i].setText(tostring(color[i]))
     seek[i].setProgress(color[i])
@@ -208,9 +208,9 @@ function RGB模式()
     bottom[i].setTextColor(locals.darkmode and Color.WHITE or Color.BLACK)
     bottom[i].setBackgroundColor(locals.darkmode and Color.BLACK or Color.WHITE)
     bottom[i].onClick=function(v)
-      local a = string.sub(v.getText(),7,-1)
+      local a = string.sub(v.getText(),5,-1)
       复制(a)
-      Snackbar.make(v,"已复制"..a,Snackbar.LENGTH_LONG).show()
+      Snackbar.make(v,"Copyed "..a,Snackbar.LENGTH_LONG).show()
     end
     seek[i].setProgress(color[i]-1)
     seek[i].setProgress(color[i]-1)
@@ -289,9 +289,9 @@ function HSV模式()
     bottom[i].setTextColor(locals.darkmode and Color.WHITE or Color.BLACK)
     bottom[i].setBackgroundColor(locals.darkmode and Color.BLACK or Color.WHITE)
     bottom[i].onClick=function(v)
-      local a = string.sub(v.getText(),7,-1)
+      local a = string.sub(v.getText(),5,-1)
       复制(a)
-      Snackbar.make(v,"已复制"..a,Snackbar.LENGTH_LONG).show()
+      Snackbar.make(v,"Copyed "..a,Snackbar.LENGTH_LONG).show()
     end
   end
   seek[1].setProgress(hsvcolor[1]-1)
@@ -351,5 +351,4 @@ colorTopButton2.onClick=function(v)
 end
 
 HSV模式()
-
 
